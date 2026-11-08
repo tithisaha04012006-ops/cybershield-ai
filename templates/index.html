@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShield AI – AI-Powered Web Threat Detection & Digital Trust Intelligence</title>
+  <meta name="description" content="Intelligent website security scanner that helps users identify potentially dangerous websites, phishing links, suspicious URLs and website security issues.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f5d4' stroke-width='2'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <span>CyberShield <span class="brand-tag">AI</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#scanner" class="active">Scanner</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <span class="hack-badge">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+          HackMatrix '26
+        </span>
+        <a href="/dashboard" class="btn btn-sm btn-outline-cyan">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
+          Security Dashboard
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero & Interactive Scanner Section -->
+  <section class="hero-section" id="scanner">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="badge-pulse"></span>
+        AI-POWERED THREAT DETECTION &bull; DIGITAL TRUST INTELLIGENCE
+      </div>
+
+      <h1 class="hero-title">
+        Secure Your Digital World with <span class="text-gradient">CyberShield AI</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Proactively identify malicious websites, zero-day phishing links, raw IP redirects, and suspicious domain patterns before entering your credentials.
+      </p>
+
+      <!-- URL Input & Scan Action -->
+      <div class="scanner-container">
+        <form id="scanForm" class="scanner-box">
+          <div class="scanner-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="urlInput" 
+            class="scanner-input font-mono" 
+            placeholder="Enter website URL (e.g. https://example.com or suspicious-site.xyz)..." 
+            autocomplete="off" 
+            spellcheck="false"
+          >
+          <button type="submit" id="btnScan" class="btn-scan">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Scan Website
+          </button>
+        </form>
+
+        <!-- Preset Demonstration Pills for Hackathon Testing -->
+        <div class="sample-presets">
+          <span class="preset-label">Test Presets:</span>
+          <button type="button" class="preset-chip high-risk" data-url="http://192.168.1.1/paypal-update-account/verify.php?token=xyz">
+            🔴 Phishing IP Simulation
+          </button>
+          <button type="button" class="preset-chip high-risk" data-url="http://free-crypto-giveaway-claim2026.xyz/login">
+            🟡 Urgency Scam (.xyz)
+          </button>
+          <button type="button" class="preset-chip high-risk" data-url="http://paypa1-secure-billing-service.top/auth">
+            🟣 Brand Typosquatting
+          </button>
+          <button type="button" class="preset-chip safe" data-url="https://github.com">
+            🟢 Reputable Authority (GitHub)
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-Time Terminal / Radar Scanning Sequence -->
+      <div class="scanning-terminal" id="scanningTerminal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title">
+            <span class="badge-pulse"></span>
+            CYBERSHIELD HEURISTIC ENGINE RUNNING
+          </span>
+          <span style="font-size:0.75rem; color:#64748b; font-family:var(--font-mono);">LOCAL-SOC-v2.6</span>
+        </div>
+        <div class="terminal-logs" id="terminalLogs">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Scan Results Presentation -->
+      <div class="results-section" id="resultsSection">
+        <div class="glass-card results-card">
+          
+          <!-- Header: Target URL & Badges -->
+          <div class="results-header">
+            <div class="target-url-info">
+              <div class="target-pill">Target Under Inspection</div>
+              <div class="target-url-display" id="resTargetUrl">https://example.com</div>
+              <div class="target-meta">
+                <span><strong>Host:</strong> <span id="resHostname">example.com</span></span>
+                <span><strong>Assessed:</strong> <span id="resTimestamp">2026-11-07 20:30 UTC</span></span>
+              </div>
+            </div>
+            <div class="results-actions">
+              <span class="badge status-low" id="resStatusBadge">
+                <span class="badge-pulse"></span> Low Risk
+              </span>
+              <button class="btn btn-sm btn-secondary" id="btnCopyReport" title="Copy summary report">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy
+              </button>
+              <a href="/dashboard" class="btn btn-sm btn-outline-cyan">
+                View in Dashboard &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Score Gauge & Key Security Indicators -->
+          <div class="score-overview-grid">
+            
+            <!-- Circular Animated Gauge -->
+            <div class="gauge-container">
+              <div class="gauge-svg-wrapper">
+                <svg class="gauge-svg" viewBox="0 0 200 200">
+                  <circle class="gauge-bg-circle" cx="100" cy="100" r="90"></circle>
+                  <circle class="gauge-progress-circle" id="resGaugeProgress" cx="100" cy="100" r="90"></circle>
+                </svg>
+                <div class="gauge-center-content">
+                  <span class="gauge-number" id="resGaugeNumber">0</span>
+                  <span class="gauge-scale">/ 100 RISK</span>
+                </div>
+              </div>
+              <div class="score-context">
+                <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.05em;">Security Classification</div>
+                <div class="score-classification" id="resGaugeClassification">Evaluating...</div>
+              </div>
+            </div>
+
+            <!-- Key Indicators Cards -->
+            <div class="indicators-grid">
+              <div class="indicator-card">
+                <span class="indicator-card-title">Protocol Security</span>
+                <span class="indicator-card-value" id="resProtocolValue">
+                  <span style="color:#10b981;">✓ HTTPS Encrypted</span>
+                </span>
+                <span style="font-size:0.75rem; color:#64748b;">TLS Transport Encryption</span>
+              </div>
+
+              <div class="indicator-card">
+                <span class="indicator-card-title">Host Architecture</span>
+                <span class="indicator-card-value" id="resHostTypeValue">Standard Named Domain</span>
+                <span style="font-size:0.75rem; color:#64748b;">IP vs DNS Resolution</span>
+              </div>
+
+              <div class="indicator-card">
+                <span class="indicator-card-title">Top-Level Domain</span>
+                <span class="indicator-card-value font-mono" id="resTldValue">.com</span>
+                <span style="font-size:0.75rem; color:#64748b;">Registry Governance</span>
+              </div>
+
+              <div class="indicator-card">
+                <span class="indicator-card-title">Threat Indicators</span>
+                <span class="indicator-card-value font-mono" id="resWarningsCountValue">0 Active</span>
+                <span style="font-size:0.75rem; color:#64748b;">Heuristic Flag Count</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Deep Analysis Breakdown: Warnings vs Positives -->
+          <div class="analysis-columns-grid">
+            
+            <!-- Warning Signs List -->
+            <div>
+              <h4 class="section-subhead">
+                <svg width="20" height="20" fill="none" stroke="#ef4444" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                Detected Warning Flags
+              </h4>
+              <div class="signal-list" id="resWarningsList">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Positive Trust Signals -->
+            <div>
+              <h4 class="section-subhead">
+                <svg width="20" height="20" fill="none" stroke="#10b981" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Observed Trust Signals
+              </h4>
+              <div class="signal-list" id="resPositiveList">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Score Explanation -->
+          <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1.4rem; margin-bottom:1.8rem;">
+            <h4 style="font-size:1rem; font-weight:700; margin-bottom:0.7rem; color:#fff; display:flex; align-items:center; gap:0.5rem;">
+              <svg width="18" height="18" fill="none" stroke="var(--accent-cyan)" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              Why did this URL receive this score?
+            </h4>
+            <ul id="resScoreReasonsList" style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.88rem;">
+              <!-- Injected by JS -->
+            </ul>
+          </div>
+
+          <!-- Actionable Protective Recommendations -->
+          <div class="recommendations-box">
+            <h4 style="font-size:1.05rem; font-weight:700; color:#93c5fd; display:flex; align-items:center; gap:0.5rem;">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              Actionable Security Recommendations
+            </h4>
+            <ul class="rec-list" id="resRecommendationsList">
+              <!-- Injected by JS -->
+            </ul>
+          </div>
+
+          <!-- Mandatory Disclaimer Banner -->
+          <div class="disclaimer-banner">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <div>
+              <strong>CyberShield AI Preliminary Security Assessment:</strong>
+              This evaluation is generated using heuristic pattern analysis, threat signatures, and protocol verification. No automated tool can guarantee 100% safety. Exercise vigilance before submitting sensitive personal credentials or financial details.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quick Platform Statistics Row -->
+      <div class="quick-stats-grid">
+        <div class="glass-card stat-item">
+          <div class="stat-icon cyan">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div>
+            <div class="stat-value font-mono">{{ stats.total_scanned }}</div>
+            <div class="stat-label">Websites Analyzed</div>
+          </div>
+        </div>
+
+        <div class="glass-card stat-item">
+          <div class="stat-icon purple">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div>
+            <div class="stat-value font-mono">{{ stats.low_risk_count }}</div>
+            <div class="stat-label">Preliminary Safe Verified</div>
+          </div>
+        </div>
+
+        <div class="glass-card stat-item">
+          <div class="stat-icon red">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <div>
+            <div class="stat-value font-mono">{{ stats.high_risk_count }}</div>
+            <div class="stat-label">Critical Threats Blocked</div>
+          </div>
+        </div>
+
+        <div class="glass-card stat-item">
+          <div class="stat-icon blue">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <div class="stat-value font-mono">&lt; 15ms</div>
+            <div class="stat-label">Heuristic Response Latency</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <span class="section-badge">Next-Gen Defense Capabilities</span>
+      <h2 class="section-title">Built for Modern Web Security</h2>
+      <p class="section-description">
+        Traditional blacklists react days after attackers launch malicious domains. CyberShield AI analyzes structural attack patterns at wire speed.
+      </p>
+
+      <div class="features-grid">
+        
+        <div class="glass-card feature-card">
+          <div class="feature-icon-box">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+              <line x1="6" y1="6" x2="6.01" y2="6"></line>
+              <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Raw IP & Hostname Interception</h3>
+          <p>Instantly flags URLs connecting directly to bare IPv4/IPv6 endpoints or octal/hex obfuscations commonly deployed in phishing kits and botnet staging.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon-box">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3>SSL / TLS Transport Inspection</h3>
+          <p>Verifies transport layer encryption and penalizes unencrypted plain HTTP links where credentials, cookies, and payment details are exposed to MitM interception.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon-box">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <polyline points="17 11 19 13 23 9"></polyline>
+            </svg>
+          </div>
+          <h3>Typosquatting & Punycode Defense</h3>
+          <p>Identifies visual homoglyphs (e.g. Cyrillic "а" vs Latin "a", leetspeak like "paypa1" or "goog1e") and Punycode "xn--" internationalized domain deceptions.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon-box">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <h3>Lexical & Social Engineering Radar</h3>
+          <p>Extracts credential-harvesting tokens, financial bait, fake lottery claims, and emergency account-lock phrases stacked across subdomains and deep URI paths.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon-box">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+          <h3>Shannon Entropy Anomaly Profiling</h3>
+          <p>Computes mathematical randomness across domain strings to identify Domain Generation Algorithms (DGA) used by ransomware families and malware command servers.</p>
+        </div>
+
+        <div class="glass-card feature-card">
+          <div class="feature-icon-box">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>Explainable Trust & Risk Index</h3>
+          <p>No black-box opacity. CyberShield AI calculates a transparent 0-100 score with itemized impact points so security analysts and users understand why a link is risky.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section" id="how-it-works">
+    <div class="container">
+      <span class="section-badge">Architectural Pipeline</span>
+      <h2 class="section-title">How CyberShield AI Analyzes URLs</h2>
+      <p class="section-description">
+        From the moment a link is submitted, our modular detection pipeline evaluates multiple threat dimensions in milliseconds.
+      </p>
+
+      <div class="steps-grid">
+        <div class="glass-card step-card">
+          <span class="step-num">01</span>
+          <span class="step-badge">Ingestion</span>
+          <h4>Syntax & Normalization</h4>
+          <p>Parses scheme, port, host authority, path fragments, and query parameters. Validates structure and identifies obfuscated encoding techniques.</p>
+        </div>
+
+        <div class="glass-card step-card">
+          <span class="step-num">02</span>
+          <span class="step-badge">Inspection</span>
+          <h4>Heuristic Extraction</h4>
+          <p>Inspects protocol security, checks TLD risk profiles, detects naked IP addresses, and flags homoglyphic lookalike character substitutions.</p>
+        </div>
+
+        <div class="glass-card step-card">
+          <span class="step-num">03</span>
+          <span class="step-badge">Synthesis</span>
+          <h4>Risk Weighting</h4>
+          <p>Assigns mathematical penalties across structural vectors, weighs brand safety reputations, and calculates a normalized 0-100 risk score.</p>
+        </div>
+
+        <div class="glass-card step-card">
+          <span class="step-num">04</span>
+          <span class="step-badge">Advisory</span>
+          <h4>Digital Trust Advisory</h4>
+          <p>Delivers classified assessment (Low, Medium, or High Risk) paired with actionable protective guidance and audit trails stored in SQLite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-badge">About CyberShield AI</span>
+          <h2>Empowering Everyday Users with SOC-Grade Threat Intelligence</h2>
+          <p>
+            Phishing remains the primary vector for credential theft, ransomware deployment, and enterprise intrusions. Attackers spin up disposable landing pages on free TLDs that vanish before commercial reputation lists catch them.
+          </p>
+          <p>
+            CyberShield AI was built during <strong>HackMatrix '26</strong> to democratize digital trust intelligence. By evaluating structural DNA rather than just static lists, CyberShield AI identifies malicious patterns in real time right in your browser.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-box">
+              <h4>100% Local Heuristics</h4>
+              <span>Runs without external API lock-in</span>
+            </div>
+            <div class="highlight-box">
+              <h4>Explainable AI</h4>
+              <span>Transparent scoring breakdown</span>
+            </div>
+            <div class="highlight-box">
+              <h4>SQLite Storage</h4>
+              <span>Persistent audit history & dashboard</span>
+            </div>
+            <div class="highlight-box">
+              <h4>Zero Dependencies</h4>
+              <span>Runs with standard Python & Flask</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="glass-card hackmatrix-box">
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+              <div class="brand-icon" style="width:48px; height:48px; font-size:1.4rem;">🛡️</div>
+              <div>
+                <h3 style="font-size:1.3rem;">HackMatrix '26 Project</h3>
+                <span style="font-size:0.8rem; color:var(--accent-cyan); font-family:var(--font-mono);">Web Threat Detection & Digital Trust</span>
+              </div>
+            </div>
+            <p style="color:#cbd5e1; font-size:0.92rem; line-height:1.6; margin-bottom:1.5rem;">
+              Developed as a 48-hour cybersecurity innovation combining heuristic threat detection, explainable risk models, and a modern glassmorphic dashboard interface.
+            </p>
+            <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem; display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; color:#94a3b8;">
+              <span>Architecture: Flask &bull; SQLite &bull; Vanilla JS</span>
+              <span style="color:#10b981;">● Status: Fully Operational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Threat Report Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <span class="section-badge">Security Response Community</span>
+      <h2 class="section-title">Report a Suspicious Website</h2>
+      <p class="section-description">
+        Encountered a zero-day phishing link or deceptive portal? Submit it to our triage database to help protect the web.
+      </p>
+
+      <div class="glass-card contact-box">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="contactType" class="form-label">Submission Type</label>
+            <select id="contactType" class="form-control" style="background:#0a0f1d; color:#fff;">
+              <option value="threat_report">Report Zero-Day Phishing / Malicious URL</option>
+              <option value="feedback">Product Feedback & Feature Request</option>
+              <option value="general">General Inquiries / Hackathon Contact</option>
+            </select>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Your Name *</label>
+              <input type="text" id="contactName" class="form-control" placeholder="e.g. Jane Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address *</label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="you@domain.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject" class="form-label">Subject / Suspicious URL</label>
+            <input type="text" id="contactSubject" class="form-control" placeholder="e.g. Suspicious banking link: http://...">
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage" class="form-label">Description & Observations *</label>
+            <textarea id="contactMessage" class="form-control" placeholder="Describe where you encountered this link and why it appears suspicious..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Submit Security Report
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="brand-logo" style="margin-bottom:0.5rem;">
+            <div class="brand-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <span>CyberShield <span class="brand-tag">AI</span></span>
+          </div>
+          <p style="color:var(--text-dim); font-size:0.85rem; max-width:400px;">
+            AI-Powered Web Threat Detection & Digital Trust Intelligence built for HackMatrix '26.
+          </p>
+        </div>
+
+        <div style="display:flex; gap:2rem; flex-wrap:wrap;">
+          <div>
+            <h5 style="font-size:0.85rem; text-transform:uppercase; color:#fff; margin-bottom:0.75rem;">Navigation</h5>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.4rem; font-size:0.85rem;">
+              <li><a href="#scanner">Scanner</a></li>
+              <li><a href="/dashboard">Analytics Dashboard</a></li>
+              <li><a href="#features">Platform Features</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="font-size:0.85rem; text-transform:uppercase; color:#fff; margin-bottom:0.75rem;">Resources</h5>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.4rem; font-size:0.85rem;">
+              <li><a href="#about">HackMatrix '26</a></li>
+              <li><a href="/api/export/csv">Export CSV Data</a></li>
+              <li><a href="/api/stats">Live JSON API</a></li>
+              <li><a href="#contact">Threat Triage</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 CyberShield AI &bull; Built with Flask, SQLite & Modern JS.</div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="color:#10b981; font-weight:700;">●</span>
+          <span>All Heuristic Threat Engines Operational</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
