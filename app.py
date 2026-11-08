@@ -212,11 +212,12 @@ def server_error(e):
 
 
 if __name__ == '__main__':
-    # Local development server
     port = int(os.environ.get('PORT', 5000))
+    host = os.environ.get('HOST', '0.0.0.0')
+    is_production = bool(os.environ.get('RENDER') or os.environ.get('DYNO'))
     print(f"\n========================================================")
     print(f" CyberShield AI - Threat Detection Server")
-    print(f" HackMatrix '26 Local Development Engine")
-    print(f" Live at: http://127.0.0.1:{port}")
+    print(f" HackMatrix '26 Engine")
+    print(f" Live at: http://{host}:{port}")
     print(f"========================================================\n")
-    app.run(host='127.0.0.1', port=port, debug=True)
+    app.run(host=host, port=port, debug=not is_production)
